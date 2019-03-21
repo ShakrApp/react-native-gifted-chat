@@ -9,6 +9,20 @@ import Color from './Color';
 
 export default class Composer extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+    };
+  }
+  
+  shouldComponentUpdate(nextProps, nextState){
+    if (!nextState.text || nextState.text.length == 0) {
+      return false;
+    }
+    return true;
+  }
+  
   onContentSizeChange(e) {
     const { contentSize } = e.nativeEvent;
 
